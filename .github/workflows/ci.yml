@@ -16,7 +16,7 @@ jobs:
           node-version: "20"
       - name: Run tests
         run: npm test
-    deploy:                                                                                          
+  deploy:                                                                                          
       needs: test                                                                                       
       runs-on: ubuntu-latest                                            
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'                                
