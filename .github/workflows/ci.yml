@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 on:
   push:
     branches: [main]
@@ -16,3 +16,20 @@ jobs:
           node-version: "20"
       - name: Run tests
         run: npm test
+    deploy:                                                                                          
+      needs: test                                                                                       
+      runs-on: ubuntu-latest                                            
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'                                
+                                                                  
+      steps:                                                                                            
+        - name: Deploy to VPS                                     
+          uses: appleboy/ssh-action@v1                                                                  
+          with:                          
+            host: ${{ secrets.VPS_HOST }}                                                               
+            username: ${{ secrets.VPS_USERNAME }}                 
+            password: ${{ secrets.VPS_PASSWORD }}                                                       
+            script: |                                                                                   
+              docker pull sameerkulkarni599/learn-devops                                                
+              docker stop learn-devops-app || true                                                      
+              docker rm learn-devops-app || true                                                        
+              docker run -d --name learn-devops-app -p 4000:3000 sameerkulkarni599/learn-devops
