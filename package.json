@@ -1,15 +1,17 @@
-                                                                  
-  {
-    "name": "learn-devops",
-    "version": "1.0.0",
-    "description": "My first DevOps project",                                                                          
-    "main": "index.js",                                                                                                
-    "scripts": {                                                                                                       
-      "start": "node index.js",                                                                                        
-      "test": "node test.js"                                                                                           
-    },                                                                                                                 
-    "keywords": [],                                                                                                    
-    "author": "Sameer Kulkarni",                                                                                       
-    "license": "ISC",                                                                                                  
-    "type": "commonjs"                                                                                                 
-  } 
+{
+  "name": "learn-devops",
+  "version": "1.0.0",
+  "description": "My first DevOps project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "Sameer Kulkarni",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "mongodb": "^6.3.0"
+  }
+}
